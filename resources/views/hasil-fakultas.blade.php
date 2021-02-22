@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Info Pemilwa Universitas</title>
+	<title>Info Pemilwa Fakultas</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!--===============================================================================================-->	
@@ -104,32 +104,22 @@
 <!--===============================================================================================-->
 </head>
 <body>
-    <div class="sidenav">
-        <hr>
-        <img src="images/icons/profil-pic.png" alt="Admin" width="50" height="50">
-        <a href="/admin">Admin</a>
-        <hr>
-        <a href="#">Daftar</a>
-        <hr>
-        <a href="/info-pemilwa-univ">Info Pemilwa Universitas</a>
-        <hr>
-        <a href="#">Info Pemilwa Fakultas</a>
-        <hr>
-        <a href="#">Info Pemilih</a>
-        <hr>
-    </div>
     <div class="limiter">
 		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
                 <span class="login100-form-title p-b-53">
-					Calon Legislatif Universitas
+					Calon Legislatif Fakultas
 				</span>
                 <table>
                     <tr>
                         <th>NIM</th>
                         <th>Nama</th>
-                        <th>Fakultas</th>
                         <th>Vote</th>
+                    </tr>
+                    <tr>
+                        <td>00000000</td>
+                        <td>Fulan</td>
+                        <td>0</td>
                     </tr>
                 </table>
             </div>

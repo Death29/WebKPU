@@ -11,7 +11,8 @@ class LoginAdminController extends Controller
     {
         if($request->username == "admin" && $request->password == "admin")
         {
-            return Redirect::to('/admin');
+            $admin = "Admin";
+            return Redirect::to('/admin')->with([ 'admin' => $admin ]);
         }
         else
         {

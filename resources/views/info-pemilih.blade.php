@@ -49,75 +49,8 @@
         }
     </style>
 <!--===============================================================================================-->
-    <style>
-        /* The sidebar menu */
-        .sidenav
-        {
-          height: 100%; /* Full-height: remove this if you want "auto" height */
-          width: 160px; /* Set the width of the sidebar */
-          position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-          z-index: 1; /* Stay on top */
-          top: 0; /* Stay at the top */
-          left: 0;
-          background-color: #2832C7; /* Blue */
-          overflow-x: hidden; /* Disable horizontal scroll */
-          padding-top: 20px;
-        }
-
-        /* The navigation menu links */
-        .sidenav a
-        {
-          padding: 6px 8px 6px 16px;
-          text-decoration: none;
-          font-size: 16px;
-          color: #FFFFFF;
-          display: block;
-          text-align: center;
-        }
-
-        /* When you mouse over the navigation links, change their color */
-        .sidenav a:hover
-        {
-          color: #f1f1f1;
-        }
-
-        /* Profile pic */
-        .sidenav img
-        {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Style page content */
-        .main {
-          margin-left: 160px; /* Same as the width of the sidebar */
-          padding: 0px 10px;
-        }
-
-        /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-        @media screen and (max-height: 450px) {
-          .sidenav {padding-top: 15px;}
-          .sidenav a {font-size: 18px;}
-        }
-    </style>
-<!--===============================================================================================-->
 </head>
 <body>
-    <div class="sidenav">
-        <hr>
-        <img src="images/icons/profil-pic.png" alt="Admin" width="50" height="50">
-        <a href="/admin">Admin</a>
-        <hr>
-        <a href="#">Daftar</a>
-        <hr>
-        <a href="/info-pemilwa-univ">Info Pemilwa Universitas</a>
-        <hr>
-        <a href="#">Info Pemilwa Fakultas</a>
-        <hr>
-        <a href="#">Info Pemilih</a>
-        <hr>
-    </div>
     <div class="limiter">
 		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
@@ -130,6 +63,12 @@
                         <th>Nama</th>
                         <th>Fakultas</th>
                         <th>Vote</th>
+                    </tr>
+                    <tr>
+                        <td>00000000</td>
+                        <td>Fulan</td>
+                        <td>F</td>
+                        <td>0</td>
                     </tr>
                 </table>
             </div>

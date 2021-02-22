@@ -26,6 +26,14 @@ Route::get('/info-pemilwa-univ', function(){
     return view('hasil-univ');
 });
 
+Route::get('/info-pemilwa-fakultas', function(){
+    return view('hasil-fakultas');
+});
+
+Rute::get('/info-pemilih', function(){
+    return view('info-pemilih');
+});
+
 Route::post('/auth-admin', 'App\Http\Controllers\LoginAdminController@login');
 
 Auth::routes();
