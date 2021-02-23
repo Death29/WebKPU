@@ -30,7 +30,7 @@ Route::get('/info-pemilwa-fakultas', function(){
     return view('hasil-fakultas');
 });
 
-Rute::get('/info-pemilih', function(){
+Route::get('/info-pemilih', function(){
     return view('info-pemilih');
 });
 
