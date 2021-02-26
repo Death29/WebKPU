@@ -109,13 +109,13 @@
         <img src="images/icons/profil-pic.png" alt="Admin" width="50" height="50">
         <a href="/admin">Admin</a>
         <hr>
-        <a href="#">Daftar</a>
+        <a href="/daftar-calon">Daftar</a>
         <hr>
         <a href="/info-pemilwa-univ">Info Pemilwa Universitas</a>
         <hr>
-        <a href="#">Info Pemilwa Fakultas</a>
+        <a href="/info-pemilwa-fakultas">Info Pemilwa Fakultas</a>
         <hr>
-        <a href="#">Info Pemilih</a>
+        <a href="/info-pemilih">Info Pemilih</a>
         <hr>
     </div>
     <div class="limiter">

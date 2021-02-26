@@ -14,26 +14,12 @@ Route::get('/', function(){
     return view('login');
 });
 
-Route::get('/admin', function(){
-    return view('admin');
-});
-
-Route::get('/login-admin', function(){
-    return view('login-admin');
-});
-
-Route::get('/info-pemilwa-univ', function(){
-    return view('hasil-univ');
-});
-
-Route::get('/info-pemilwa-fakultas', function(){
-    return view('hasil-fakultas');
-});
-
-Route::get('/info-pemilih', function(){
-    return view('info-pemilih');
-});
-
+Route::get('/admin', 'App\Http\Controllers\AdminController@index');
+Route::get('/login-admin', 'App\Http\Controllers\LoginAdminController@index');
+Route::get('/info-pemilwa-univ', 'App\Http\Controllers\HasilUnivController@index');
+Route::get('/info-pemilwa-fakultas', 'App\Http\Controllers\HasilFakultasController@index');
+Route::get('/info-pemilih', 'App\Http\Controllers\InfoPemilihController@index');
+Route::get('/daftar-calon', 'App\Http\Controllers\DaftarCalonController@index');
 Route::post('/auth-admin', 'App\Http\Controllers\LoginAdminController@login');
 
 Auth::routes();

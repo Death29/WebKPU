@@ -104,6 +104,20 @@
 <!--===============================================================================================-->
 </head>
 <body>
+    <div class="sidenav">
+        <hr>
+        <img src="images/icons/profil-pic.png" alt="Admin" width="50" height="50">
+        <a href="/admin">Admin</a>
+        <hr>
+        <a href="/daftar-calon">Daftar</a>
+        <hr>
+        <a href="/info-pemilwa-univ">Info Pemilwa Universitas</a>
+        <hr>
+        <a href="/info-pemilwa-fakultas">Info Pemilwa Fakultas</a>
+        <hr>
+        <a href="/info-pemilih">Info Pemilih</a>
+        <hr>
+    </div>
     <div class="limiter">
 		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
@@ -115,11 +129,6 @@
                         <th>NIM</th>
                         <th>Nama</th>
                         <th>Vote</th>
-                    </tr>
-                    <tr>
-                        <td>00000000</td>
-                        <td>Fulan</td>
-                        <td>0</td>
                     </tr>
                 </table>
             </div>

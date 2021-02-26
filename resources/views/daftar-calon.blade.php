@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Info Pemilwa Universitas</title>
+	<title>Daftar Calon Legislatif</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!--===============================================================================================-->	
@@ -31,21 +31,32 @@
     <style>
         table
         {
-            margin: 0 auto;
             width: 100%;
-            border: 1px solid;
+            margin: 0 auto;
         }
-        tr
+        button
         {
-            border: 1px solid;
+            margin-left: 65%;
         }
-        th
+        .input
         {
-            border: 1px solid;
+            border-radius: 20px;
+            border: 1px solid #2D9FD9;
+            color: #A0D18C;
+            width: 250px;
+            height: 30px;
+            padding-left: 10px;
         }
-        td
+        .input:focus
         {
-            border: 1px solid;
+            outline: none;
+            border: 1px solid #A0D18C;
+            color: #2D9FD9;
+        }
+        .error-msg
+        {
+            text-align: center;
+            color: red;
         }
     </style>
 <!--===============================================================================================-->
@@ -120,19 +131,63 @@
     </div>
     <div class="limiter">
 		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
-			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-                <span class="login100-form-title p-b-53">
-					Calon Legislatif Universitas
-				</span>
-                <table>
-                    <tr>
-                        <th>NIM</th>
-                        <th>Nama</th>
-                        <th>Fakultas</th>
-                        <th>Pilihan Universitas</th>
-                        <th>Pilihan Fakultas</th>
-                    </tr>
-                </table>
+            <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ url('daftar-calonlegis') }}">
+                {{ csrf_field() }}
+                    <span class="login100-form-title p-b-53">
+					    Daftar Calon Legislatif
+				    </span>
+                    <table>
+                        <tr>
+                            <th>NIM :</th>
+                            <td><input type="text" name="nim" id="nim" class="input" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
+                        <tr>
+                            <th>Nama :</th>
+                            <td><input type="text" name="nama" id="nama" class="input" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
+                        <tr>
+                            <th>Jenis Legislatif :</th>
+                            <td>
+                                <input type="radio" name="jenis_legislatif" id="jenis_legislatif" value="Universitas" checked />
+                                <label for="Universitas">Universitas</label>
+                                <input type="radio" name="jenis_legislatif" id="jenis_legislatif" value="Fakultas" />
+                                <label for="Fakultas">Fakultas</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
+                        <tr>
+                            <th>Fakultas :</th>
+                            <td>
+                                <select name="fakultas" id="fakultas">
+                                    <option value="Fakultas Teknologi Industri" selected>Fakultas Teknologi Industri</option>
+                                    <option value="Fakultas Ilmu Agama Islam">Fakultas Ilmu Agama Islam</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
+                        <tr>
+                            <th>Jurusan :</th>
+                            <td><input type="text" name="jurusan" id="jurusan" class="input" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button type="submit" nama="daftar" class="btn btn-primary">Daftar</button></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
     </div>

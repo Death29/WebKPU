@@ -7,6 +7,11 @@ use Redirect;
 
 class LoginAdminController extends Controller
 {
+    public function index()
+    {
+        return view('login-admin');
+    }
+
     public function login(Request $request)
     {
         if($request->username == "admin" && $request->password == "admin")
