@@ -14,8 +14,15 @@ Route::get('/', function(){
     return view('login');
 });
 
+Route::get('/admin', 'App\Http\Controllers\AdminController@index');
+Route::get('/login-admin', 'App\Http\Controllers\LoginAdminController@index');
+Route::get('/info-pemilwa-univ', 'App\Http\Controllers\HasilUnivController@index');
+Route::get('/info-pemilwa-fakultas', 'App\Http\Controllers\HasilFakultasController@index');
+Route::get('/info-pemilih', 'App\Http\Controllers\InfoPemilihController@index');
+Route::get('/daftar-calon', 'App\Http\Controllers\DaftarCalonController@index');
+Route::post('/auth-admin', 'App\Http\Controllers\LoginAdminController@login');
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('auth/google','Auth\GoogleController@redirectToGoogle');
-Route::get('auth/google/callback','Auth\GoogleController@handleGoogleCallback');
+Route::get('auth/{provider}', 'App\Http\Controllers\Auth\AuthController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'App\Http\Controllers\Auth\AuthController@handleProviderCallback');
