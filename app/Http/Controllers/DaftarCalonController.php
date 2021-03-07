@@ -10,4 +10,9 @@ class DaftarCalonController extends Controller
     {
         return view('daftar-calon');
     }
+
+    public function daftar(Request $request)
+    {
+
+    }
 }

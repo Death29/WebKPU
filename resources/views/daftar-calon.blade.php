@@ -33,6 +33,7 @@
         {
             width: 100%;
             margin: 0 auto;
+            font-size: 14px;
         }
         button
         {
@@ -167,9 +168,15 @@
                         <tr>
                             <th>Fakultas :</th>
                             <td>
-                                <select name="fakultas" id="fakultas">
-                                    <option value="Fakultas Teknologi Industri" selected>Fakultas Teknologi Industri</option>
+                                <select name="fakultas" id="fakultas" class="input">
+                                    <option value="Fakultas Bisnis dan Ekonomika" selected>Fakultas Bisnis dan Ekonomika</option>
+                                    <option value="Fakultas Hukum">Fakultas Hukum</option>
+                                    <option value="Fakultas Kedokteran">Fakultas Kedokteran</option>
                                     <option value="Fakultas Ilmu Agama Islam">Fakultas Ilmu Agama Islam</option>
+                                    <option value="Fakultas Teknologi Industri">Fakultas Teknologi Industri</option>
+                                    <option value="Fakultas Teknik Sipil dan Perencanaan">Fakultas Teknik Sipil dan Perencanaan</option>
+                                    <option value="Fakultas Psikologi dan Ilmu Sosial Budaya">Fakultas Psikologi dan Ilmu Sosial Budaya</option>
+                                    <option value="Fakultas Matematika dan Ilmu Pengetahuan Alam">Fakultas Matematika dan Ilmu Pengetahuan Alam</option>
                                 </select>
                             </td>
                         </tr>

@@ -2,13 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\app\\Http",
-    "\\app\\Http\\Controllers",
-    "\\app\\Models",
     "\\resources",
     "\\resources\\views",
     "\\routes"
   ],
-  "SelectedNode": "\\app\\Http\\Controllers\\InfoPemilihController.php",
+  "SelectedNode": "\\resources\\views\\daftar-calon.blade.php",
   "PreviewInSolutionExplorer": false
 }
