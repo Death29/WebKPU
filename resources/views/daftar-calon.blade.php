@@ -141,14 +141,14 @@
                     <table>
                         <tr>
                             <th>NIM :</th>
-                            <td><input type="text" name="nim" id="nim" class="input" /></td>
+                            <td><input type="text" name="nim" id="nim" class="input" required /></td>
                         </tr>
                         <tr>
                             <td colspan="2"><br></td>
                         </tr>
                         <tr>
                             <th>Nama :</th>
-                            <td><input type="text" name="nama" id="nama" class="input" /></td>
+                            <td><input type="text" name="nama" id="nama" class="input" required /></td>
                         </tr>
                         <tr>
                             <td colspan="2"><br></td>
@@ -185,7 +185,7 @@
                         </tr>
                         <tr>
                             <th>Jurusan :</th>
-                            <td><input type="text" name="jurusan" id="jurusan" class="input" /></td>
+                            <td><input type="text" name="jurusan" id="jurusan" class="input" required /></td>
                         </tr>
                         <tr>
                             <td colspan="2"><br></td>

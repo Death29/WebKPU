@@ -23,6 +23,7 @@ Route::get('/daftar-calon', 'App\Http\Controllers\DaftarCalonController@index');
 
 Route::post('/auth-admin', 'App\Http\Controllers\LoginAdminController@login');
 Route::post('/daftar-calonlegis', 'App\Http\Controllers\DaftarCalonController@daftar');
+Route::post('/filter-hasilfakultas', 'App\Http\Controllers\HasilFakultasController@filter');
 
 Auth::routes();
 

@@ -131,6 +131,14 @@
                         <th>Fakultas</th>
                         <th>Vote</th>
                     </tr>
+                    @foreach($calonlegis as $key => $data)
+                    <tr>
+                        <td>{{ $data->nim }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>{{ $data->fakultas }}</td>
+                        <td>{{ $data->suara }}</td>
+                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>

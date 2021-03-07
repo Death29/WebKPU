@@ -139,17 +139,25 @@
                 <span class="login100-form-title p-b-53">
 					Calon Legislatif Fakultas
 				</span>
-                <select name="fakultas" id="fakultas" class="filtering">
-                    <option value="Fakultas Bisnis dan Ekonomika" selected>Fakultas Bisnis dan Ekonomika</option>
-                    <option value="Fakultas Hukum">Fakultas Hukum</option>
-                    <option value="Fakultas Kedokteran">Fakultas Kedokteran</option>
-                    <option value="Fakultas Ilmu Agama Islam">Fakultas Ilmu Agama Islam</option>
-                    <option value="Fakultas Teknologi Industri">Fakultas Teknologi Industri</option>
-                    <option value="Fakultas Teknik Sipil dan Perencanaan">Fakultas Teknik Sipil dan Perencanaan</option>
-                    <option value="Fakultas Psikologi dan Ilmu Sosial Budaya">Fakultas Psikologi dan Ilmu Sosial Budaya</option>
-                    <option value="Fakultas Matematika dan Ilmu Pengetahuan Alam">Fakultas Matematika dan Ilmu Pengetahuan Alam</option>
-                </select>
-                <button class="btn btn-info btn-sm">Filter</button>
+                @if(isset($selected_fakultas))
+                <p align="center">{{ $selected_fakultas }}</p>
+                @else
+                <p align="center">Fakultas Bisnis dan Ekonomika</p>
+                @endif
+                <form method="POST" action="{{ url('filter-hasilfakultas') }}">
+                {{ csrf_field() }}
+                    <select name="fakultas" id="fakultas" class="filtering">
+                        <option value="Fakultas Bisnis dan Ekonomika" selected>Fakultas Bisnis dan Ekonomika</option>
+                        <option value="Fakultas Hukum">Fakultas Hukum</option>
+                        <option value="Fakultas Kedokteran">Fakultas Kedokteran</option>
+                        <option value="Fakultas Ilmu Agama Islam">Fakultas Ilmu Agama Islam</option>
+                        <option value="Fakultas Teknologi Industri">Fakultas Teknologi Industri</option>
+                        <option value="Fakultas Teknik Sipil dan Perencanaan">Fakultas Teknik Sipil dan Perencanaan</option>
+                        <option value="Fakultas Psikologi dan Ilmu Sosial Budaya">Fakultas Psikologi dan Ilmu Sosial Budaya</option>
+                        <option value="Fakultas Matematika dan Ilmu Pengetahuan Alam">Fakultas Matematika dan Ilmu Pengetahuan Alam</option>
+                    </select>
+                    <button class="btn btn-info btn-sm">Filter</button>
+                </form>
                 <table>
                     <tr>
                         <th>NIM</th>
@@ -157,6 +165,14 @@
                         <th>Fakultas</th>
                         <th>Vote</th>
                     </tr>
+                    @foreach($calonlegis as $key => $data)
+                    <tr>
+                        <td>{{ $data->nim }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>{{ $data->fakultas }}</td>
+                        <td>{{ $data->suara }}</td>
+                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
