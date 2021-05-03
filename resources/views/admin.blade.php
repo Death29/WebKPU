@@ -95,6 +95,8 @@
         <hr>
         <a href="/info-pemilih">Info Pemilih</a>
         <hr>
+        <a href="/logout">Logout</a>
+        <hr>
     </div>
     <div class="limiter">
 		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
