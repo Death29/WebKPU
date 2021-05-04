@@ -24,9 +24,11 @@ Route::group(['middleware' => 'auth:admin'], function()
     Route::get('/info-pemilwa-fakultas', 'App\Http\Controllers\HasilFakultasController@index');
     Route::get('/info-pemilih', 'App\Http\Controllers\InfoPemilihController@index');
     Route::get('/daftar-calon', 'App\Http\Controllers\DaftarCalonController@index');
+    Route::get('/edit-calon/{id}', 'App\Http\Controllers\EditCalonController@index');
     Route::get('/logout', 'App\Http\Controllers\LogoutController@index');
 
     Route::post('/daftar-calonlegis', 'App\Http\Controllers\DaftarCalonController@daftar');
+    Route::post('/edit-calonlegis', 'App\Http\Controllers\EditCalonController@edit');
     Route::post('/filter-hasilfakultas', 'App\Http\Controllers\HasilFakultasController@filter');
 });
 

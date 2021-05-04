@@ -166,13 +166,19 @@
                         <th>Nama</th>
                         <th>Fakultas</th>
                         <th>Vote</th>
+                        <th>Aksi</th>
                     </tr>
                     @foreach($calonlegis as $key => $data)
                     <tr>
+                        <input type="hidden" name="id" id="id" value="{{ $data->id }}" />
                         <td>{{ $data->nim }}</td>
                         <td>{{ $data->nama }}</td>
                         <td>{{ $data->fakultas }}</td>
                         <td>{{ $data->suara }}</td>
+                        <td>
+                            <button type="button" onclick="window.location='{{ url("/edit-calon/$data->id") }}'" class="btn btn-warning btn-sm">Edit</button>
+                            <button type="button" onclick="window.location='{{ url("/") }}'" class="btn btn-danger btn-sm">Hapus</button>
+                        </td>
                     </tr>
                     @endforeach
                 </table>
