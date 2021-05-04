@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Redirect;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller
 {
     public function index()
     {
-        return view('login-admin');
+        Auth::guard('admin')->logout();
+        return Redirect::to('/login-admin');
     }
 }

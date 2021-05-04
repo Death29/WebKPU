@@ -14,7 +14,7 @@ Route::get('/', function(){
     return view('login');
 });
 
-Route::get('/login-admin', 'App\Http\Controllers\LoginAdminController@index');
+Route::get('/login-admin', 'App\Http\Controllers\LoginAdminController@index')->name('login-admin');
 Route::post('/auth-admin', 'App\Http\Controllers\LoginAdminController@login');
 
 Route::group(['middleware' => 'auth:admin'], function() 
