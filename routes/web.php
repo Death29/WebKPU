@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth:admin'], function()
     Route::get('/info-pemilih', 'App\Http\Controllers\InfoPemilihController@index');
     Route::get('/daftar-calon', 'App\Http\Controllers\DaftarCalonController@index');
     Route::get('/edit-calon/{id}', 'App\Http\Controllers\EditCalonController@index');
+    Route::get('/hapus-calon/{id}', 'App\Http\Controllers\HapusCalonController@index');
     Route::get('/logout', 'App\Http\Controllers\LogoutController@index');
 
     Route::post('/daftar-calonlegis', 'App\Http\Controllers\DaftarCalonController@daftar');

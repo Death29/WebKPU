@@ -99,8 +99,32 @@
         <hr>
     </div>
     <div class="limiter">
-		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
-        </div>
+		  <div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
+        @if(Session::has('daftar-msg'))
+          <div class="alert alert-success alert-block" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{ Session::get('daftar-msg') }}</strong>
+          </div>
+        @endif
+        @if(Session::has('edit-msg'))
+          <div class="alert alert-success alert-block" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{ Session::get('edit-msg') }}</strong>
+          </div>
+        @endif
+        @if(Session::has('hapus-msg'))
+          <div class="alert alert-success alert-block" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{ Session::get('hapus-msg') }}</strong>
+          </div>
+        @endif
+      </div>
     </div>
 </body>
 </html>

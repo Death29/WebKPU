@@ -13,4 +13,11 @@ class EditCalonController extends Controller
         $calonlegis = CalonLegis::where("id", $id)->get();
         return view('edit-calon', ["calonlegis" => $calonlegis]);
     }
+
+    public function edit(Request $request)
+    {
+        CalonLegis::find($request->input("id"))->update($request->all());
+        $msg = 'Data berhasil diupdate';
+        return Redirect::to('admin')->with(['edit-msg' => $msg]);
+    }
 }

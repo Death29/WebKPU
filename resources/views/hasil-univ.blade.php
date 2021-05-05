@@ -143,7 +143,7 @@
                         <td>{{ $data->suara }}</td>
                         <td>
                             <button type="button" onclick="window.location='{{ url("/edit-calon/$data->id") }}'" class="btn btn-warning btn-sm">Edit</button>
-                            <button type="button" onclick="window.location='{{ url("/") }}'" class="btn btn-danger btn-sm">Hapus</button>
+                            <button type="button" onclick="window.location='{{ url("/hapus-calon/$data->id") }}'" class="btn btn-danger btn-sm">Hapus</button>
                         </td>
                     </tr>
                     @endforeach

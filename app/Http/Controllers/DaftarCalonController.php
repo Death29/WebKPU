@@ -23,6 +23,7 @@ class DaftarCalonController extends Controller
             "jurusan" => $request->jurusan,
             "suara" => 0,
         ]);
-        return Redirect::to('/admin');
+        $msg = "Data berhasil ditambah";
+        return Redirect::to('/admin')->with(['daftar-msg' => $msg]);
     }
 }

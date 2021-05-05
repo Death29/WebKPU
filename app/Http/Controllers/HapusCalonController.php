@@ -8,8 +8,10 @@ use App\Models\CalonLegis;
 
 class HapusCalonController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        
+        CalonLegis::find($id)->delete();
+        $msg = "Data berhasil dihapus";
+        return Redirect::to('/admin')->with(['hapus-msg' => $msg]);
     }
 }
