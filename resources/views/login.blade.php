@@ -43,7 +43,7 @@
 						<i class="fa fa-facebook-official"></i>
 						Facebook
 					</a> -->
-					<a href="{{ url('auth/google') }}" class="btn-google m-b-20 m-l-auto m-r-auto">
+					<a href="{{ url('/login-pemilih') }}" class="btn-google m-b-20 m-l-auto m-r-auto">
 						<img src="images/icons/icon-google.png" alt="GOOGLE">
 						Google
 					</a>	

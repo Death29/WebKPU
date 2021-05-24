@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Daftar Calon Legislatif</title>
+	<title>Daftar Pemilih</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!--===============================================================================================-->	
@@ -27,6 +27,10 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}"/>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}"/>
+<!--===============================================================================================-->
+    <script src="js/jquery-3.4.1.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/emailvalidation.js"></script>
 <!--===============================================================================================-->
     <style>
         table
@@ -114,86 +118,70 @@
         }
     </style>
 <!--===============================================================================================-->
+    <script type="text/javascript">
+        function validasi()
+        {
+            let validator = $("#registerForm").validate
+            ({
+                rules:
+                {
+                    email: "required",
+                    password: "required",
+                    u_password: 
+                    {
+                        equalTo: "#password",
+                    },
+                },
+                messages:
+                {
+                    email: "Masukkan E-mail!",
+                    password: "Masukkan Password!",
+                    u_password: "Password tidak sesuai!",
+                }
+            });
+            if(validator.form())
+            {
+
+            }
+        }
+    </script>
+<!--===============================================================================================-->
 </head>
 <body>
-    <div class="sidenav">
-        <hr>
-        <img src="images/icons/profil-pic.png" alt="Admin" width="50" height="50">
-        <a href="/admin">Admin</a>
-        <hr>
-        <a href="/daftar-calon">Daftar</a>
-        <hr>
-        <a href="/info-pemilwa-univ">Info Pemilwa Universitas</a>
-        <hr>
-        <a href="/info-pemilwa-fakultas">Info Pemilwa Fakultas</a>
-        <hr>
-        <a href="/info-pemilih">Info Pemilih</a>
-        <hr>
-        <a href="/logout">Logout</a>
-        <hr>
-    </div>
     <div class="limiter">
-		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
+        <div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
             <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-                <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ url('daftar-calonlegis') }}">
+                <form class="login100-form validate-form flex-sb flex-w" id="registerForm" method="POST" action="{{ url('daftar-pemilih') }}">
                 {{ csrf_field() }}
                     <span class="login100-form-title p-b-53">
-					    Daftar Calon Legislatif
-				    </span>
+                        Registrasi Pemilih
+                    </span>
                     <table>
                         <tr>
-                            <th>NIM :</th>
-                            <td><input type="text" name="nim" id="nim" class="input" required /></td>
+                            <th>E-mail :</th>
+                            <td><input type="text" name="email" id="email" class="input" required /></td>
                         </tr>
                         <tr>
                             <td colspan="2"><br></td>
                         </tr>
                         <tr>
-                            <th>Nama :</th>
-                            <td><input type="text" name="nama" id="nama" class="input" required /></td>
+                            <th>Password :</th>
+                            <td><input type="password" name="password" id="password" class="input" required /></td>
                         </tr>
                         <tr>
                             <td colspan="2"><br></td>
                         </tr>
                         <tr>
-                            <th>Jenis Legislatif :</th>
-                            <td>
-                                <input type="radio" name="jenis_legislatif" id="jenis_legislatif" value="Universitas" checked />
-                                <label for="Universitas">Universitas</label>
-                                <input type="radio" name="jenis_legislatif" id="jenis_legislatif" value="Fakultas" />
-                                <label for="Fakultas">Fakultas</label>
+                            <th>Ulangi Password :</th>
+                            <td><input type="password" name="u_password" id="u_password" class="input" required /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" name="daftar" id="daftar" class="btn btn-primary" onclick="validasi()">Daftar</button>
                             </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><br></td>
-                        </tr>
-                        <tr>
-                            <th>Fakultas :</th>
-                            <td>
-                                <select name="fakultas" id="fakultas" class="input">
-                                    <option value="Fakultas Bisnis dan Ekonomika" selected>Fakultas Bisnis dan Ekonomika</option>
-                                    <option value="Fakultas Hukum">Fakultas Hukum</option>
-                                    <option value="Fakultas Kedokteran">Fakultas Kedokteran</option>
-                                    <option value="Fakultas Ilmu Agama Islam">Fakultas Ilmu Agama Islam</option>
-                                    <option value="Fakultas Teknologi Industri">Fakultas Teknologi Industri</option>
-                                    <option value="Fakultas Teknik Sipil dan Perencanaan">Fakultas Teknik Sipil dan Perencanaan</option>
-                                    <option value="Fakultas Psikologi dan Ilmu Sosial Budaya">Fakultas Psikologi dan Ilmu Sosial Budaya</option>
-                                    <option value="Fakultas Matematika dan Ilmu Pengetahuan Alam">Fakultas Matematika dan Ilmu Pengetahuan Alam</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><br></td>
-                        </tr>
-                        <tr>
-                            <th>Jurusan :</th>
-                            <td><input type="text" name="jurusan" id="jurusan" class="input" required /></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><br></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><button type="submit" nama="daftar" id="daftar" class="btn btn-primary">Daftar</button></td>
                         </tr>
                     </table>
                 </form>

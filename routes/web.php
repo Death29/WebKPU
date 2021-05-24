@@ -33,6 +33,14 @@ Route::group(['middleware' => 'auth:admin'], function()
     Route::post('/filter-hasilfakultas', 'App\Http\Controllers\HasilFakultasController@filter');
 });
 
+Route::get('/login-pemilih', 'App\Http\Controllers\LoginPemilihController@index');
+Route::get('/register-pemilih', 'App\Http\Controllers\RegistrasiPemilihController@index');
+
+Route::group(['middleware' => 'auth:pemilih'], function()
+{
+    
+});
+
 Auth::routes();
 
 Route::get('auth/{provider}', 'App\Http\Controllers\Auth\AuthController@redirectToProvider');
