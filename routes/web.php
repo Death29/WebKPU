@@ -40,7 +40,8 @@ Route::post('/daftar-pemilih', 'App\Http\Controllers\RegistrasiPemilihController
 
 Route::group(['middleware' => 'auth:pemilih'], function()
 {
-    //Route::get('')
+    Route::get('/beranda-user', 'App\Http\Controllers\BerandaUserController@index');
+    Route::get('/logout', 'App\Http\Controllers\LogoutController@index');
 });
 
 Auth::routes();

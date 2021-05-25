@@ -11,7 +11,16 @@ class LogoutController extends Controller
 {
     public function index()
     {
-        Auth::guard('admin')->logout();
-        return Redirect::to('/login-admin');
+        if(Auth::guard('admin')->check())
+        {
+            Auth::guard('admin')->logout();
+            return Redirect::to('/login-admin');
+        }
+        
+        if(Auth::guard('pemilih')->check())
+        {
+            Auth::guard('pemilih')->logout();
+            return Redirect::to('/login-pemilih');
+        }
     }
 }

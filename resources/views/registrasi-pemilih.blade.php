@@ -63,58 +63,9 @@
             text-align: center;
             color: red;
         }
-    </style>
-<!--===============================================================================================-->
-    <style>
-        /* The sidebar menu */
-        .sidenav
+        a
         {
-          height: 100%; /* Full-height: remove this if you want "auto" height */
-          width: 160px; /* Set the width of the sidebar */
-          position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-          z-index: 1; /* Stay on top */
-          top: 0; /* Stay at the top */
-          left: 0;
-          background-color: #2832C7; /* Blue */
-          overflow-x: hidden; /* Disable horizontal scroll */
-          padding-top: 20px;
-        }
-
-        /* The navigation menu links */
-        .sidenav a
-        {
-          padding: 6px 8px 6px 16px;
-          text-decoration: none;
-          font-size: 16px;
-          color: #FFFFFF;
-          display: block;
-          text-align: center;
-        }
-
-        /* When you mouse over the navigation links, change their color */
-        .sidenav a:hover
-        {
-          color: #f1f1f1;
-        }
-
-        /* Profile pic */
-        .sidenav img
-        {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Style page content */
-        .main {
-          margin-left: 160px; /* Same as the width of the sidebar */
-          padding: 0px 10px;
-        }
-
-        /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-        @media screen and (max-height: 450px) {
-          .sidenav {padding-top: 15px;}
-          .sidenav a {font-size: 18px;}
+            color: blue;
         }
     </style>
 <!--===============================================================================================-->
@@ -190,6 +141,16 @@
                         <tr>
                             <td colspan="2">
                                 <button type="submit" name="daftar" id="daftar" class="btn btn-primary" onclick="validasi()">Daftar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <p align="center">
+                                    Sudah punya akun? Silahkan <a href="{{ url('/login-pemilih') }}">Login</a> dengan E-mail UII
+                                </p>
                             </td>
                         </tr>
                     </table>

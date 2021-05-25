@@ -104,7 +104,11 @@
                             <td colspan="2"><br></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><p align="center">Belum punya akun? Silahkan <a href="{{ url('/register-pemilih') }}">Registrasi</a> dengan E-mail UII</p></td>
+                            <td colspan="2">
+                                <p align="center">
+                                    Belum punya akun? Silahkan <a href="{{ url('/register-pemilih') }}">Registrasi</a> dengan E-mail UII
+                                </p>
+                            </td>
                         </tr>
                     </table>
                 </form>
