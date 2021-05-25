@@ -55,7 +55,7 @@ class LoginAdminController extends Controller
         else
         {
             $errorMsg = 'Username atau Password salah!';
-            return Redirect::back()->withErrors([$errorMsg,'msg']);
+            return Redirect::back()->withErrors([$errorMsg, 'msg']);
         }
     }
 }

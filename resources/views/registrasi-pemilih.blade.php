@@ -125,6 +125,7 @@
             ({
                 rules:
                 {
+                    name: "required",
                     email: "required",
                     password: "required",
                     u_password: 
@@ -134,6 +135,7 @@
                 },
                 messages:
                 {
+                    name: "Masukkan Nama!",
                     email: "Masukkan E-mail!",
                     password: "Masukkan Password!",
                     u_password: "Password tidak sesuai!",
@@ -154,9 +156,16 @@
                 <form class="login100-form validate-form flex-sb flex-w" id="registerForm" method="POST" action="{{ url('daftar-pemilih') }}">
                 {{ csrf_field() }}
                     <span class="login100-form-title p-b-53">
-                        Registrasi Pemilih
+                        Registrasi Pemilih Pemilwa KM UII 2020
                     </span>
                     <table>
+                        <tr>
+                            <th>Nama :</th>
+                            <td><input type="text" name="name" id="name" class="input" required /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
                         <tr>
                             <th>E-mail :</th>
                             <td><input type="text" name="email" id="email" class="input" required /></td>

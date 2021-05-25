@@ -15,7 +15,6 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'pemilih' => 'web',
         'passwords' => 'users',
     ],
 
@@ -55,7 +54,7 @@ return [
 
         'pemilih' => [
             'driver' => 'session',
-            'provider' => 'pemilih',
+            'provider' => 'users',
         ],
     ],
 
@@ -89,7 +88,7 @@ return [
 
         'pemilih' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Pemilih::class,
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [

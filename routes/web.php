@@ -33,12 +33,14 @@ Route::group(['middleware' => 'auth:admin'], function()
     Route::post('/filter-hasilfakultas', 'App\Http\Controllers\HasilFakultasController@filter');
 });
 
-Route::get('/login-pemilih', 'App\Http\Controllers\LoginPemilihController@index');
+Route::get('/login-pemilih', 'App\Http\Controllers\LoginPemilihController@index')->name('login-pemilih');
+Route::post('/auth-pemilih', 'App\Http\Controllers\LoginPemilihController@login');
 Route::get('/register-pemilih', 'App\Http\Controllers\RegistrasiPemilihController@index');
+Route::post('/daftar-pemilih', 'App\Http\Controllers\RegistrasiPemilihController@register');
 
 Route::group(['middleware' => 'auth:pemilih'], function()
 {
-    
+    //Route::get('')
 });
 
 Auth::routes();
