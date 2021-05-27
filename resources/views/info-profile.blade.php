@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Beranda User</title>
+	<title>Info Profile</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!--===============================================================================================-->	
@@ -107,7 +107,7 @@
     <div class="sidenav">
         <hr>
         <img src="images/icons/profil-pic.png" alt="Admin" width="50" height="50">
-        <a href="/info-profile">{{ Auth::guard('pemilih')->user()->name }}</a>
+        <a href="info-profile">{{ Auth::guard('pemilih')->user()->name }}</a>
         <hr>
         <a href="/beranda-user">Vote</a>
         <hr>
@@ -115,79 +115,35 @@
         <hr>
     </div>
     <div class="limiter">
-		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
+        <div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-                <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ url('vote-univ') }}">
-                {{ csrf_field() }}
-                    <span class="login100-form-title p-b-53">
-                        Calon Legislatif Universitas
-                    </span>
-                    <table>
-                        <tr>
-                            <th>NIM</th>
-                            <th>Nama</th>
-                            <th>Fakultas</th>
-                            <th>Vote</th>
-                        </tr>
-                        <tr>
-                            <td align="center" colspan="3">No Vote</td>
-                            <td align="center"><input type="radio" id="vote" name="vote" value="0" /></td>
-                        </tr>
-                        @foreach($calonlegis_univ as $key => $data)
-                        <tr>
-                            <td>{{ $data->nim }}</td>
-                            <td>{{ $data->nama }}</td>
-                            <td>{{ $data->fakultas }}</td>
-                            <td align="center"><input type="radio" id="vote" name="vote" value="{{ $data->id }}" /></td>
-                        </tr>
-                        @endforeach
-                        <tr>
-                            <td align="right" colspan="4">
-                                <button type="submit" name="vote_univ" class="btn btn-success">Vote</button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-                <hr />
-                <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ url('vote-fakultas') }}">
-                {{ csrf_field() }}
-                    <span class="login100-form-title p-b-53">
-                        Calon Legislatif Fakultas
-                    </span>
-                    <table>
-                        <tr>
-                            <th>NIM</th>
-                            <th>Nama</th>
-                            <th>Fakultas</th>
-                            <th>Vote</th>
-                        </tr>
-                        <tr>
-                            <td align="center" colspan="3">No Vote</td>
-                            <td align="center"><input type="radio" id="vote" name="vote" value="0" /></td>
-                        </tr>
-                        @foreach($calonlegis_fakultas as $key => $data)
-                        <tr>
-                            <td>{{ $data->nim }}</td>
-                            <td>{{ $data->nama }}</td>
-                            <td>{{ $data->fakultas }}</td>
-                            <td align="center"><input type="radio" id="vote" name="vote" value="{{ $data->id }}" /></td>
-                        </tr>
-                        @endforeach
-                        <tr>
-                            <td align="right" colspan="4">
-                                <button type="submit" name="vote_fakultas" class="btn btn-success">Vote</button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-                @if(Session::has('success_msg'))
-                    <div class="alert alert-success alert-block" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>{{ Session::get('success_msg') }}</strong>
-                    </div>
-                @endif
+                <span class="login100-form-title p-b-53">
+                    Info Profile Anda
+                </span>
+                <table>
+                    @foreach($info_user as $key => $data)
+                    <tr>
+                        <th>Nama :</th>
+                        <td>{{ $data->name }}</td>
+                    </tr>
+                    <tr>
+                        <th>E-mail :</th>
+                        <td>{{ $data->email }}</td>
+                    </tr>
+                    @endforeach
+                    @foreach($pilihan_u as $key => $data)
+                    <tr>
+                        <th>Pilihan Universitas :</th>
+                        <td>{{ $data->nama }}</td>
+                    </tr>
+                    @endforeach
+                    @foreach($pilihan_f as $key => $data)
+                    <tr>
+                        <th>Pilihan Fakultas :</th>
+                        <td>{{ $data->nama }}</td>
+                    </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>
