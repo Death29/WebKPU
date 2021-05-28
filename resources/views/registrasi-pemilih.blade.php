@@ -143,6 +143,14 @@
                                 <button type="submit" name="daftar" id="daftar" class="btn btn-primary" onclick="validasi()">Daftar</button>
                             </td>
                         </tr>
+                        @if($errors->any())
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="error-msg">{{ $errors->first() }}</td>
+                        </tr>
+                        @endif
                         <tr>
                             <td colspan="2"><br></td>
                         </tr>

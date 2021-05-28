@@ -18,7 +18,36 @@ class BerandaUserController extends Controller
         {
             $calonlegis_univ = CalonLegis::where("jenis_legislatif", "Universitas")->get();
             $calonlegis_fakultas = CalonLegis::where("jenis_legislatif", "Fakultas")->get(); 
-            return view('BerandaUser', ["calonlegis_univ" => $calonlegis_univ, "calonlegis_fakultas" => $calonlegis_fakultas]);
+
+            $nim = substr(Auth::guard('pemilih')->user()->email, 0 , 8);
+            $can_vote_u = true;
+            $can_vote_f = true;
+
+            $find_vote_u = Pemilih::where("nim", $nim)->whereNotNull("pilihan_univ")->get();
+            $find_vote_f = Pemilih::where("nim", $nim)->whereNotNull("pilihan_fakultas")->get();
+
+            foreach($find_vote_u as $key => $data)
+            {
+                if(!empty($data->pilihan_univ))
+                {
+                    $can_vote_u = false;
+                }
+            }
+
+            foreach($find_vote_f as $key => $data)
+            {
+                if(!empty($data->pilihan_fakultas))
+                {
+                    $can_vote_f = false;
+                }
+            }
+
+            return view('BerandaUser', [
+            "calonlegis_univ" => $calonlegis_univ, 
+            "calonlegis_fakultas" => $calonlegis_fakultas,
+            "can_vote_u" => $can_vote_u,
+            "can_vote_f" => $can_vote_f,
+            ]);
         }
         else
         {
@@ -36,7 +65,11 @@ class BerandaUserController extends Controller
         foreach($pilihan_univ as $key => $data)
         {
             $id_calon = $data->id;
+            $suara = $data->suara;
         }
+
+        $suara = $suara + 1;
+        CalonLegis::find($id_calon)->update(["suara" => $suara]);
 
         Pemilih::create([
             "nim" => $nim,
@@ -57,7 +90,11 @@ class BerandaUserController extends Controller
         foreach($pilihan_fakultas as $key => $data)
         {
             $id_calon = $data->id;
+            $suara = $data->suara;
         }
+
+        $suara = $suara + 1;
+        CalonLegis::find($id_calon)->update(["suara" => $suara]);
 
         Pemilih::create([
             "nim" => $nim,

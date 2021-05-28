@@ -34,18 +34,22 @@
             margin: 0 auto;
             width: 100%;
             border: 1px solid;
+            text-align: center
         }
         tr
         {
             border: 1px solid;
+            text-align: center
         }
         th
         {
             border: 1px solid;
+            text-align: center
         }
         td
         {
             border: 1px solid;
+            text-align: center
         }
     </style>
 <!--===============================================================================================-->
@@ -124,16 +128,26 @@
 		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
                 <span class="login100-form-title p-b-53">
-					Calon Legislatif Universitas
+					Info Pemilih
 				</span>
                 <table>
                     <tr>
                         <th>NIM</th>
                         <th>Nama</th>
                         <th>Fakultas</th>
-                        <th>Pilihan Universitas</th>
-                        <th>Pilihan Fakultas</th>
+                        <th>Pilihan Universitas (id)</th>
+                        <th>Pilihan Fakultas (id)</th>
                     </tr>
+                    @foreach($pemilih as $key => $data)
+                    <tr>
+                        <input type="hidden" name="id" id="id" value="{{ $data->id }}" />
+                        <td>{{ $data->nim }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>{{ $data->fakultas }}</td>
+                        <td>{{ $data->pilihan_univ }}</td>
+                        <td>{{ $data->pilihan_fakultas }}</td>
+                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>

@@ -14,13 +14,13 @@ class LogoutController extends Controller
         if(Auth::guard('admin')->check())
         {
             Auth::guard('admin')->logout();
-            return Redirect::to('/login-admin');
+            return Redirect::to('/');
         }
         
         if(Auth::guard('pemilih')->check())
         {
             Auth::guard('pemilih')->logout();
-            return Redirect::to('/login-pemilih');
+            return Redirect::to('/');
         }
     }
 }

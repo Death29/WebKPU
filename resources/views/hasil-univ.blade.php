@@ -34,18 +34,22 @@
             margin: 0 auto;
             width: 100%;
             border: 1px solid;
+            text-align: center;
         }
         tr
         {
             border: 1px solid;
+            text-align: center;
         }
         th
         {
             border: 1px solid;
+            text-align: center;
         }
         td
         {
             border: 1px solid;
+            text-align: center;
         }
     </style>
 <!--===============================================================================================-->

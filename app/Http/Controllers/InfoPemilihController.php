@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pemilih;
 
 class InfoPemilihController extends Controller
 {
     public function index()
     {
-        return view('info-pemilih');
+        $pemilih = Pemilih::paginate(20);
+        return view('info-pemilih', ["pemilih" => $pemilih]);
     }
 }

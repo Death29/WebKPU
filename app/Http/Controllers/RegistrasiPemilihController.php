@@ -43,25 +43,34 @@ class RegistrasiPemilihController extends Controller
             return Redirect::back()->withErrors($validator)->withInput($request->all());
         }
 
-        $data = [
-            'name' => $request->input("name"),
-            'email' => $request->input("email"),
-            'password' => $request->input("password"),
-        ];
-
-        $msg = "Registrasi berhasil";
-
-        event(new Registered($user = $this->create($request->all())));
-        Auth::guard('pemilih')->login($user);
-
-        if(Auth::guard('pemilih')->check())
+        $check_email_uii = substr($request->input("email"), 8);
+        if($check_email_uii === "@students.uii.ac.id")
         {
-            return Redirect::to('/beranda-user')->with(['registrasi-msg', $msg]);
+            $data = [
+                'name' => $request->input("name"),
+                'email' => $request->input("email"),
+                'password' => $request->input("password"),
+            ];
+
+            $msg = "Registrasi berhasil";
+
+            event(new Registered($user = $this->create($request->all())));
+            Auth::guard('pemilih')->login($user);
+
+            if(Auth::guard('pemilih')->check())
+            {
+                return Redirect::to('/beranda-user')->with(['registrasi-msg', $msg]);
+            }
+            else
+            {
+                $errorMsg = 'Registrasi gagal!';
+                return Redirect::back()->withErrors([$errorMsg, 'msg']);
+            }
         }
         else
         {
-            $errorMsg = 'Registrasi gagal!';
-            return Redirect::back()->withErrors([$errorMsg, 'msg']);
+            $errorMsg = "Harap menggunakan E-mail UII";
+            return Redirect::back()->withErrors([$errorMsg, "msg"]);
         }
     }
 

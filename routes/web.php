@@ -26,7 +26,6 @@ Route::group(['middleware' => 'auth:admin'], function()
     Route::get('/daftar-calon', 'App\Http\Controllers\DaftarCalonController@index');
     Route::get('/edit-calon/{id}', 'App\Http\Controllers\EditCalonController@index');
     Route::get('/hapus-calon/{id}', 'App\Http\Controllers\HapusCalonController@index');
-    Route::get('/logout', 'App\Http\Controllers\LogoutController@index');
 
     Route::post('/daftar-calonlegis', 'App\Http\Controllers\DaftarCalonController@daftar');
     Route::post('/edit-calonlegis', 'App\Http\Controllers\EditCalonController@edit');
@@ -44,8 +43,9 @@ Route::group(['middleware' => 'auth:pemilih'], function()
     Route::post('/vote-univ', 'App\Http\Controllers\BerandaUserController@vote_univ');
     Route::post('/vote-fakultas', 'App\Http\Controllers\BerandaUserController@vote_fakultas');
     Route::get('/info-profile', 'App\Http\Controllers\InfoProfileController@index');
-    Route::get('/logout', 'App\Http\Controllers\LogoutController@index');
 });
+
+Route::get('/logout', 'App\Http\Controllers\LogoutController@index');
 
 Auth::routes();
 

@@ -34,18 +34,22 @@
             margin: 0 auto;
             width: 100%;
             border: 1px solid;
+            text-align: center;
         }
         tr
         {
             border: 1px solid;
+            text-align: center;
         }
         th
         {
             border: 1px solid;
+            text-align: center;
         }
         td
         {
             border: 1px solid;
+            text-align: center;
         }
     </style>
 <!--===============================================================================================-->
@@ -117,6 +121,7 @@
     <div class="limiter">
 		<div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                @if($can_vote_u)
                 <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ url('vote-univ') }}">
                 {{ csrf_field() }}
                     <span class="login100-form-title p-b-53">
@@ -148,7 +153,13 @@
                         </tr>
                     </table>
                 </form>
+                @else
+                <span class="login100-form-title p-b-53">
+                    Anda telah memilih Calon Legislatif Universitas
+                </span>
+                @endif
                 <hr />
+                @if($can_vote_f)
                 <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ url('vote-fakultas') }}">
                 {{ csrf_field() }}
                     <span class="login100-form-title p-b-53">
@@ -180,6 +191,11 @@
                         </tr>
                     </table>
                 </form>
+                @else
+                <span class="login100-form-title p-b-53">
+                    Anda telah memilih Calon Legislatif Fakultas
+                </span>
+                @endif
                 @if(Session::has('success_msg'))
                     <div class="alert alert-success alert-block" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="close">
