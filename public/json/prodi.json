@@ -1,0 +1,217 @@
+[
+    {
+        "nim": "211",
+        "jurusan": "D3 Manajemen Perusahaan",
+        "fakultas": "FBE"
+    },
+    {
+        "nim": "212",
+        "jurusan": "D3 Akuntansi",
+        "fakultas": "FBE"
+    },
+    {
+        "nim": "213",
+        "jurusan": "D3 Perbankan & Keuangan",
+        "fakultas": "FBE"
+    },
+    {
+        "nim": "231",
+        "jurusan": "D3 Analisis Kimia",
+        "fakultas": "FMIPA"
+    },
+    {
+        "nim": "311",
+        "jurusan": "Manajemen",
+        "fakultas": "FBE"
+    },
+    {
+        "nim": "312",
+        "jurusan": "Akuntansi",
+        "fakultas": "FBE"
+    },
+    {
+        "nim": "313",
+        "jurusan": "Ilmu Ekonomi",
+        "fakultas": "FBE"
+    },
+    {
+        "nim": "316",
+        "jurusan": "IP Manajemen",
+        "fakultas": "FBE"
+    },
+    {
+        "nim": "317",
+        "jurusan": "IP Akuntansi",
+        "fakultas": "FBE"
+    },
+    {
+        "nim": "318",
+        "jurusan": "IP Ilmu Ekonomi",
+        "fakultas": "FBE"
+    },
+    {
+        "nim": "320",
+        "jurusan": "Psikologi",
+        "fakultas": "FPSB"
+    },
+    {
+        "nim": "321",
+        "jurusan": "Ilmu Komunikasi",
+        "fakultas": "FPSB"
+    },
+    {
+        "nim": "322",
+        "jurusan": "Pendidikan Bahasa Inggris",
+        "fakultas": "FPSB"
+    },
+    {
+        "nim": "323",
+        "jurusan": "Hubungan Internasional",
+        "fakultas": "FPSB"
+    },
+    {
+        "nim": "324",
+        "jurusan": "IP Ilmu Komunikasi",
+        "fakultas": "FPSB"
+    },
+    {
+        "nim": "325",
+        "jurusan": "IP Hubungan Internasional",
+        "fakultas": "FPSB"
+    },
+    {
+        "nim": "410",
+        "jurusan": "Ilmu Hukum",
+        "fakultas": "FH"
+    },
+    {
+        "nim": "415",
+        "jurusan": "IP Ilmu Hukum",
+        "fakultas": "FH"
+    },
+    {
+        "nim": "421",
+        "jurusan": "Hukum Islam",
+        "fakultas": "FIAI"
+    },
+    {
+        "nim": "422",
+        "jurusan": "Pendidikan Agama Islam",
+        "fakultas": "FIAI"
+    },
+    {
+        "nim": "423",
+        "jurusan": "Ekonomi Islam",
+        "fakultas": "FIAI"
+    },
+    {
+        "nim": "424",
+        "jurusan": "IP Hukum Islam",
+        "fakultas": "FIAI"
+    },
+    {
+        "nim": "511",
+        "jurusan": "Teknik Sipil",
+        "fakultas": "FTSP"
+    },
+    {
+        "nim": "512",
+        "jurusan": "Arsitektur",
+        "fakultas": "FTSP"
+    },
+    {
+        "nim": "513",
+        "jurusan": "Teknik Lingkungan",
+        "fakultas": "FTSP"
+    },
+    {
+        "nim": "514",
+        "jurusan": "IP Teknik Sipil",
+        "fakultas": "FTSP"
+    },
+    {
+        "nim": "516",
+        "jurusan": "IP Arsitektur",
+        "fakultas": "FTSP"
+    },
+    {
+        "nim": "521",
+        "jurusan": "Teknik Kimia",
+        "fakultas": "FTI"
+    },
+    {
+        "nim": "522",
+        "jurusan": "Teknik Industri",
+        "fakultas": "FTI"
+    },
+    {
+        "nim": "523",
+        "jurusan": "Informatika",
+        "fakultas": "FTI"
+    },
+    {
+        "nim": "524",
+        "jurusan": "Teknik Elektro",
+        "fakultas": "FTI"
+    },
+    {
+        "nim": "525",
+        "jurusan": "Teknik Mesin",
+        "fakultas": "FTI"
+    },
+    {
+        "nim": "526",
+        "jurusan": "Rekayasa Tekstil",
+        "fakultas": "FTI"
+    },
+    {
+        "nim": "528",
+        "jurusan": "IP Teknik Industri",
+        "fakultas": "FTI"
+    },
+    {
+        "nim": "611",
+        "jurusan": "Statistika",
+        "fakultas": "FMIPA"
+    },
+    {
+        "nim": "612",
+        "jurusan": "Ilmu Kimia",
+        "fakultas": "FMIPA"
+    },
+    {
+        "nim": "613",
+        "jurusan": "Farmasi",
+        "fakultas": "FMIPA"
+    },
+    {
+        "nim": "614",
+        "jurusan": "Pendidikan Kimia",
+        "fakultas": "FMIPA"
+    },
+    {
+        "nim": "711",
+        "jurusan": "Pendidikan Dokter",
+        "fakultas": "FK"
+    },
+    {
+        "nim": "916",
+        "jurusan": "Magister Teknik Industri",
+        "fakultas": "FTI"
+    },
+    {
+        "nim": "515",
+        "jurusan": "Profesi Arsitek",
+        "fakultas": "FTSP"
+    },
+    {
+        "nim": "915",
+        "jurusan": "Magister Psikologi Profesi",
+        "fakultas": "FPSB"
+    },
+    {
+        "nim": "912",
+        "jurusan": " Magister Ilmu Hukum",
+        "fakultas": "FH"
+    }
+]
