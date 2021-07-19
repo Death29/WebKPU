@@ -22,6 +22,9 @@ class InfoProfileController extends Controller
             $info_user = User::where("id", $user_id)->get();
             $pilihan = Pemilih::where("nim", $nim)->get();
 
+            $nama_calon_u = "";
+            $nama_calon_f = "";
+
             foreach($pilihan as $key => $data)
             {
                 if(!empty($data->pilihan_univ))

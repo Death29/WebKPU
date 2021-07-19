@@ -131,18 +131,32 @@
                         <td>{{ $data->email }}</td>
                     </tr>
                     @endforeach
+                    @if(!empty($pilihan_u))
                     @foreach($pilihan_u as $key => $data)
                     <tr>
                         <th>Pilihan Universitas :</th>
                         <td>{{ $data->nama }}</td>
                     </tr>
                     @endforeach
+                    @else
+                    <tr>
+                        <th>Pilihan Universitas :</th>
+                        <td>Belum memilih</td>
+                    </tr>
+                    @endif
+                    @if(!empty($pilihan_f))
                     @foreach($pilihan_f as $key => $data)
                     <tr>
                         <th>Pilihan Fakultas :</th>
                         <td>{{ $data->nama }}</td>
                     </tr>
                     @endforeach
+                    @else
+                    <tr>
+                        <th>Pilihan Fakultas :</th>
+                        <td>Belum memilih</td>
+                    </tr>
+                    @endif
                 </table>
             </div>
         </div>

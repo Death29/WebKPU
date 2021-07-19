@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\CalonLegis;
 use App\Models\Pemilih;
+use App\Models\Prodi;
 use Redirect;
 use Session;
 
@@ -16,8 +17,21 @@ class BerandaUserController extends Controller
     {
         if(Auth::guard('pemilih')->check())
         {
+            $sub_nim = substr(Auth::guard('pemilih')->user()->email, 2, 3);
+            $prodi = Prodi::where("nim", $sub_nim)->get();
+
+            $fakultas_pemilih = "";
+
+            foreach($prodi as $key => $data) 
+            {
+                if(!empty($data->fakultas))
+                {
+                    $fakultas_pemilih = $data->fakultas;
+                }
+            }
+
             $calonlegis_univ = CalonLegis::where("jenis_legislatif", "Universitas")->get();
-            $calonlegis_fakultas = CalonLegis::where("jenis_legislatif", "Fakultas")->get(); 
+            $calonlegis_fakultas = CalonLegis::where("jenis_legislatif", "Fakultas")->where("fakultas", $fakultas_pemilih)->get(); 
 
             $nim = substr(Auth::guard('pemilih')->user()->email, 0 , 8);
             $can_vote_u = true;
@@ -43,10 +57,10 @@ class BerandaUserController extends Controller
             }
 
             return view('BerandaUser', [
-            "calonlegis_univ" => $calonlegis_univ, 
-            "calonlegis_fakultas" => $calonlegis_fakultas,
-            "can_vote_u" => $can_vote_u,
-            "can_vote_f" => $can_vote_f,
+                "calonlegis_univ" => $calonlegis_univ, 
+                "calonlegis_fakultas" => $calonlegis_fakultas,
+                "can_vote_u" => $can_vote_u,
+                "can_vote_f" => $can_vote_f,
             ]);
         }
         else
