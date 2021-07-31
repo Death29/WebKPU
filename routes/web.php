@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth:pemilih'], function()
     Route::get('/info-profile', 'App\Http\Controllers\InfoProfileController@index');
 });
 
+Route::get('/tes-email','App\Http\Controllers\TestEmailController@index');
 Route::get('/logout', 'App\Http\Controllers\LogoutController@index');
 
 Auth::routes();

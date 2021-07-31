@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\User;
+use App\Models\Prodi;
+use App\Mail\RegistrasiOTP;
 use Redirect;
 use Validator;
 use Session;
@@ -46,25 +49,48 @@ class RegistrasiPemilihController extends Controller
         $check_email_uii = substr($request->input("email"), 8);
         if($check_email_uii === "@students.uii.ac.id")
         {
-            $data = [
-                'name' => $request->input("name"),
-                'email' => $request->input("email"),
-                'password' => $request->input("password"),
-            ];
+            $sub_nim = substr($request->input("email"), 2, 3);
+            $prodi = Prodi::where("nim", $sub_nim)->get();
 
-            $msg = "Registrasi berhasil";
+            $fakultas_pemilih = "";
 
-            event(new Registered($user = $this->create($request->all())));
-            Auth::guard('pemilih')->login($user);
-
-            if(Auth::guard('pemilih')->check())
+            foreach($prodi as $key => $data) 
             {
-                return Redirect::to('/beranda-user')->with(['registrasi-msg', $msg]);
+                if(!empty($data->fakultas))
+                {
+                    $fakultas_pemilih = $data->fakultas;
+                }
+            }
+
+            if($fakultas_pemilih != "")
+            {
+                //Mail::to($request->input("email"))->send(new RegistrasiOTP());
+
+                $data = [
+                    'name' => $request->input("name"),
+                    'email' => $request->input("email"),
+                    'password' => $request->input("password"),
+                ];
+
+                $msg = "Registrasi berhasil";
+
+                event(new Registered($user = $this->create($request->all())));
+                Auth::guard('pemilih')->login($user);
+
+                if(Auth::guard('pemilih')->check())
+                {
+                    return Redirect::to('/beranda-user')->with(['registrasi-msg', $msg]);
+                }
+                else
+                {
+                    $errorMsg = 'Registrasi gagal!';
+                    return Redirect::back()->withErrors([$errorMsg, 'msg']);
+                }
             }
             else
             {
-                $errorMsg = 'Registrasi gagal!';
-                return Redirect::back()->withErrors([$errorMsg, 'msg']);
+                $errorMsg = "Pemilwa tidak tersedia pada fakultas anda!";
+                return Redirect::back()->withErrors([$errorMsg, "msg"]);
             }
         }
         else
