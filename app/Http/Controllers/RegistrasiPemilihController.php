@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Prodi;
 use App\Mail\RegistrasiOTP;
+use Carbon\Carbon;
 use Redirect;
 use Validator;
 use Session;
@@ -20,7 +21,14 @@ class RegistrasiPemilihController extends Controller
     {
         if(Auth::guard('pemilih')->check())
         {
-            return Redirect::to("/beranda-user");
+            if(Auth::guard('pemilih')->user()->email_verified_at == NULL)
+            {
+                return Redirect::to("/verifikasi-email");
+            }
+            else
+            {
+                return Redirect::to("/beranda-user");
+            }
         }
         return view('registrasi-pemilih');
     }
@@ -64,7 +72,10 @@ class RegistrasiPemilihController extends Controller
 
             if($fakultas_pemilih != "")
             {
-                //Mail::to($request->input("email"))->send(new RegistrasiOTP());
+                $nim = substr($request->input("email"), 0, 8);
+                $nama = $request->input("name");
+                $otp = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 1,  6);
+                $otp_expire = Carbon::now()->addMinutes(30);
 
                 $data = [
                     'name' => $request->input("name"),
@@ -72,14 +83,15 @@ class RegistrasiPemilihController extends Controller
                     'password' => $request->input("password"),
                 ];
 
-                $msg = "Registrasi berhasil";
-
                 event(new Registered($user = $this->create($request->all())));
                 Auth::guard('pemilih')->login($user);
 
                 if(Auth::guard('pemilih')->check())
                 {
-                    return Redirect::to('/beranda-user')->with(['registrasi-msg', $msg]);
+                    $id = Auth::guard('pemilih')->user()->id;
+                    $kirim = User::where("id", $id)->update(["otp" => $otp, "otp_expired" => $otp_expire]);
+                    Mail::to($request->input("email"))->send(new RegistrasiOTP($nim, $nama, $otp, $otp_expire));
+                    return Redirect::to('/verifikasi-email');
                 }
                 else
                 {
@@ -108,5 +120,23 @@ class RegistrasiPemilihController extends Controller
                     "password" => Hash::make($data["password"]),
                 ]);
         return $user;
+    }
+
+    public function resend(Request $request)
+    {
+        $id = $request->input("id");
+        $user = User::where("id", $id)->get()->first();
+
+        $email = $user->email;
+        $nim = substr($email, 0, 8);
+        $nama = $user->nama;
+        $otp = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 1,  6);
+        $otp_expire = Carbon::now()->addMinutes(30);
+
+        Mail::to($email)->send(new RegistrasiOTP($nim, $nama, $otp, $otp_expire));
+        $kirim = User::where("id", $id)->update(["otp" => $otp, "otp_expired" => $otp_expire]);
+        $msg = "Kode OTP sudah terkirim!";
+
+       return Redirect::back()->with(['resend_msg' => $msg]);
     }
 }

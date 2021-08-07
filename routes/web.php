@@ -39,6 +39,8 @@ Route::post('/daftar-pemilih', 'App\Http\Controllers\RegistrasiPemilihController
 
 Route::group(['middleware' => 'auth:pemilih'], function()
 {
+    Route::get('/verifikasi-email','App\Http\Controllers\VerifikasiEmailController@index');
+    Route::post('/kirim-ulang','App\Http\Controllers\RegistrasiPemilihController@resend');
     Route::get('/beranda-user', 'App\Http\Controllers\BerandaUserController@index');
     Route::post('/vote-univ', 'App\Http\Controllers\BerandaUserController@vote_univ');
     Route::post('/vote-fakultas', 'App\Http\Controllers\BerandaUserController@vote_fakultas');

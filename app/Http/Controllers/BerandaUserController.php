@@ -17,51 +17,58 @@ class BerandaUserController extends Controller
     {
         if(Auth::guard('pemilih')->check())
         {
-            $sub_nim = substr(Auth::guard('pemilih')->user()->email, 2, 3);
-            $prodi = Prodi::where("nim", $sub_nim)->get();
-
-            $fakultas_pemilih = "";
-
-            foreach($prodi as $key => $data) 
+            if(Auth::guard('pemilih')->user()->email_verified_at == NULL)
             {
-                if(!empty($data->fakultas))
-                {
-                    $fakultas_pemilih = $data->fakultas;
-                }
+                return Redirect::to("/verifikasi-email");
             }
-
-            $calonlegis_univ = CalonLegis::where("jenis_legislatif", "Universitas")->get();
-            $calonlegis_fakultas = CalonLegis::where("jenis_legislatif", "Fakultas")->where("fakultas", $fakultas_pemilih)->get(); 
-
-            $nim = substr(Auth::guard('pemilih')->user()->email, 0 , 8);
-            $can_vote_u = true;
-            $can_vote_f = true;
-
-            $find_vote_u = Pemilih::where("nim", $nim)->whereNotNull("pilihan_univ")->get();
-            $find_vote_f = Pemilih::where("nim", $nim)->whereNotNull("pilihan_fakultas")->get();
-
-            foreach($find_vote_u as $key => $data)
+            else
             {
-                if(!empty($data->pilihan_univ))
-                {
-                    $can_vote_u = false;
-                }
-            }
+                $sub_nim = substr(Auth::guard('pemilih')->user()->email, 2, 3);
+                $prodi = Prodi::where("nim", $sub_nim)->get();
 
-            foreach($find_vote_f as $key => $data)
-            {
-                if(!empty($data->pilihan_fakultas))
-                {
-                    $can_vote_f = false;
-                }
-            }
+                $fakultas_pemilih = "";
 
-            return view('BerandaUser', [
-                "calonlegis_univ" => $calonlegis_univ, 
-                "calonlegis_fakultas" => $calonlegis_fakultas,
-                "can_vote_u" => $can_vote_u,
-                "can_vote_f" => $can_vote_f,
-            ]);
+                foreach($prodi as $key => $data) 
+                {
+                    if(!empty($data->fakultas))
+                    {
+                        $fakultas_pemilih = $data->fakultas;
+                    }
+                }
+
+                $calonlegis_univ = CalonLegis::where("jenis_legislatif", "Universitas")->get();
+                $calonlegis_fakultas = CalonLegis::where("jenis_legislatif", "Fakultas")->where("fakultas", $fakultas_pemilih)->get(); 
+
+                $nim = substr(Auth::guard('pemilih')->user()->email, 0 , 8);
+                $can_vote_u = true;
+                $can_vote_f = true;
+
+                $find_vote_u = Pemilih::where("nim", $nim)->whereNotNull("pilihan_univ")->get();
+                $find_vote_f = Pemilih::where("nim", $nim)->whereNotNull("pilihan_fakultas")->get();
+
+                foreach($find_vote_u as $key => $data)
+                {
+                    if(!empty($data->pilihan_univ))
+                    {
+                        $can_vote_u = false;
+                    }
+                }
+
+                foreach($find_vote_f as $key => $data)
+                {
+                    if(!empty($data->pilihan_fakultas))
+                    {
+                        $can_vote_f = false;
+                    }
+                }
+
+                return view('BerandaUser', [
+                    "calonlegis_univ" => $calonlegis_univ, 
+                    "calonlegis_fakultas" => $calonlegis_fakultas,
+                    "can_vote_u" => $can_vote_u,
+                    "can_vote_f" => $can_vote_f,
+                ]);
+            }
         }
         else
         {

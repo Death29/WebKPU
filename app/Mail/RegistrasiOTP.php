@@ -16,10 +16,12 @@ class RegistrasiOTP extends Mailable
      *
      * @return void
      */
-    public function __construct($nim, $nama)
+    public function __construct($nim, $nama, $otp, $otp_expire)
     {
         $this->nim = $nim;
         $this->nama = $nama;
+        $this->otp = $otp;
+        $this->otp_expire = $otp_expire;
     }
 
     /**
@@ -29,15 +31,13 @@ class RegistrasiOTP extends Mailable
      */
     public function build()
     {
-        $length = 6;
-        $otp = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 1,  $length);
-
         return $this->from("kmuii.kpu@gmail.com")
                         ->view("otpemail")
                         ->with([
                             "nim" => $this->nim,
                             "nama" => $this->nama,
-                            "otp" => $otp,
+                            "otp" => $this->otp,
+                            "otp_expire" => $this->otp_expire,
                         ]);
     }
 }
