@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Info Profile</title>
+	<title>Edit Profile</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!--===============================================================================================-->	
@@ -33,24 +33,31 @@
         {
             margin: 0 auto;
             width: 100%;
-            border: 1px solid;
+            font-size: 14px;
         }
-        tr
+        button
         {
-            border: 1px solid;
+            margin-left: 60%;
         }
-        th
+        .input
         {
-            border: 1px solid;
+            border-radius: 20px;
+            border: 1px solid #2D9FD9;
+            color: #A0D18C;
+            width: 250px;
+            height: 30px;
+            padding-left: 10px;
         }
-        td
+        .input:focus
         {
-            border: 1px solid;
+            outline: none;
+            border: 1px solid #A0D18C;
+            color: #2D9FD9;
         }
-        .edit
+        .error-msg
         {
-            margin-top: 5%;
-            float: right;
+            text-align: center;
+            color: red;
         }
     </style>
 <!--===============================================================================================-->
@@ -122,56 +129,27 @@
     <div class="limiter">
         <div class="container-login100" style="background-image:url({{asset('images/bg-01.jpg')}})">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-                @if(Session::has('edit-msg'))
-                    <div class="alert alert-success alert-block" id="edit-msg" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>{{ Session::get('edit-msg') }}</strong>
-                    </div>
-                @endif
-                <span class="login100-form-title p-b-53">
-                    Info Profile Anda
-                </span>
-                <table>
-                    @foreach($info_user as $key => $data)
-                    <tr>
-                        <th>Nama :</th>
-                        <td>{{ $data->name }}</td>
-                    </tr>
-                    <tr>
-                        <th>E-mail :</th>
-                        <td>{{ $data->email }}</td>
-                    </tr>
+                <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ url('edit-profile-pemilih') }}">
+                {{ csrf_field() }}
+                    <span class="login100-form-title p-b-53">
+                        Edit Profile Anda
+                    </span>
+                    @foreach($user as $key => $data)
+                    <table>
+                        <input type="hidden" name="id" id="id" value="{{ $data->id }}" />
+                        <tr>
+                            <th>Nama :</th>
+                            <td><input type="text" name="nama" id="nama" class="input" value="{{ $data->name }}" required /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button type="submit" name="edit" class="btn btn-primary">Edit</button></td>
+                        </tr>
+                    </table>
                     @endforeach
-                    @if(!empty($pilihan_u))
-                    @foreach($pilihan_u as $key => $data)
-                    <tr>
-                        <th>Pilihan Universitas :</th>
-                        <td>{{ $data->nama }}</td>
-                    </tr>
-                    @endforeach
-                    @else
-                    <tr>
-                        <th>Pilihan Universitas :</th>
-                        <td>Belum memilih</td>
-                    </tr>
-                    @endif
-                    @if(!empty($pilihan_f))
-                    @foreach($pilihan_f as $key => $data)
-                    <tr>
-                        <th>Pilihan Fakultas :</th>
-                        <td>{{ $data->nama }}</td>
-                    </tr>
-                    @endforeach
-                    @else
-                    <tr>
-                        <th>Pilihan Fakultas :</th>
-                        <td>Belum memilih</td>
-                    </tr>
-                    @endif
-                </table>
-                <a href="edit-profile" class="btn btn-primary edit">Edit Profile</a>
+                </form>
             </div>
         </div>
     </div>

@@ -41,10 +41,13 @@ Route::group(['middleware' => 'auth:pemilih'], function()
 {
     Route::get('/verifikasi-email','App\Http\Controllers\VerifikasiEmailController@index');
     Route::post('/kirim-ulang','App\Http\Controllers\RegistrasiPemilihController@resend');
+    Route::post('/kirim-otp','App\Http\Controllers\RegistrasiPemilihController@sendOtp');
     Route::get('/beranda-user', 'App\Http\Controllers\BerandaUserController@index');
     Route::post('/vote-univ', 'App\Http\Controllers\BerandaUserController@vote_univ');
     Route::post('/vote-fakultas', 'App\Http\Controllers\BerandaUserController@vote_fakultas');
     Route::get('/info-profile', 'App\Http\Controllers\InfoProfileController@index');
+    Route::get('/edit-profile', 'App\Http\Controllers\EditProfilePemilihController@index');
+    Route::post('/edit-profile-pemilih', 'App\Http\Controllers\EditProfilePemilihController@edit');
 });
 
 Route::get('/tes-email','App\Http\Controllers\TestEmailController@index');

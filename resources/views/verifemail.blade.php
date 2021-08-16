@@ -39,6 +39,7 @@
 	.button
 	{
 		margin-left: 65%;
+		margin-top: 5%;
 	}
 	.link
 	{

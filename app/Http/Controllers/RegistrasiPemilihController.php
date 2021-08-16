@@ -129,7 +129,7 @@ class RegistrasiPemilihController extends Controller
 
         $email = $user->email;
         $nim = substr($email, 0, 8);
-        $nama = $user->nama;
+        $nama = $user->name;
         $otp = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 1,  6);
         $otp_expire = Carbon::now()->addMinutes(30);
 
@@ -138,5 +138,36 @@ class RegistrasiPemilihController extends Controller
         $msg = "Kode OTP sudah terkirim!";
 
        return Redirect::back()->with(['resend_msg' => $msg]);
+    }
+
+    public function sendOtp(Request $request)
+    {
+        $id = $request->input("id");
+        $otp = $request->input("otp");
+        $user = User::where("id", $id)->get()->first();
+        $now = Carbon::now();
+
+        $msg = "";
+        if($otp == $user->otp && $now < $user->otp_expired)
+        {
+            $verif_email = User::where("id", $id)->update(["email_verified_at" => $now]);
+            $msg = "E-mail berhasil diverifikasi";
+            return Redirect::to('/beranda-user')->with(['verified_msg' => $msg]);
+        }
+        elseif($now < $user->otp_expired) // Kode OTP salah
+        {
+            $msg = "Kode OTP anda salah!";
+            return Redirect::back()->with(['wrong_msg' => $msg]);
+        }
+        elseif($otp == $user->otp)
+        {
+            $msg = "Kode OTP anda sudah kedaluarsa!";
+            return Redirect::back()->with(['wrong_msg' => $msg]);
+        }
+        else
+        {
+            $msg = "Kode OTP tidak valid!";
+            return Redirect::back()->with(['wrong_msg' => $msg]);
+        }
     }
 }

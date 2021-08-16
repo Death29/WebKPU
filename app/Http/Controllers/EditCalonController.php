@@ -18,6 +18,6 @@ class EditCalonController extends Controller
     {
         CalonLegis::find($request->input("id"))->update($request->all());
         $msg = 'Data berhasil diupdate';
-        return Redirect::to('admin')->with(['edit-msg' => $msg]);
+        return Redirect::to('/admin')->with(['edit-msg' => $msg]);
     }
 }
